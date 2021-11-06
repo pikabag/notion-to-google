@@ -1,0 +1,18 @@
+{
+  "name": "calendars_for_sports",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node notion",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@notionhq/client": "^0.4.4",
+    "dotenv": "^10.0.0",
+    "googleapis": "^39.2.0"
+  }
+}
