@@ -1,4 +1,5 @@
 const fs = require('fs');
+const { nhl_abbrev, nfl_abbrev, mlb_abbrev, nba_abbrev } = require('./lib/abbrev.js');
 const readline = require('readline');
 const {google} = require('googleapis');
 
@@ -59,12 +60,15 @@ function listEvents(auth) {
   }, (err, res) => {
     if (err) return console.log('The API returned an error: ' + err);
     const events = res.data.items;
+    console.log(nfl_abbrev);
     if (events.length) {
       events.map((event, i) => {
         const start = event.start.dateTime || event.start.date;
         const [homeTeam, awayTeam] = event.summary.split('@');
         console.log('home', homeTeam.trim())
-        console.log('away', awayTeam.trim())
+        console.log(nhl_abbrev[homeTeam.trim()]);
+        // console.log(event)
+        //console.log('away', awayTeam.trim())
       });
     } else {
       console.log('No upcoming events found.');
