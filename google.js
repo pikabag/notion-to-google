@@ -51,8 +51,7 @@ function getAccessToken(oAuth2Client, callback) {
 function listEvents(auth) {
   const calendar = google.calendar({version: 'v3', auth});
   calendar.events.list({
-    // calendarId: 'primary',
-    calendarId: 'jtg30s76k3jqg5cp2matoqojlo@group.calendar.google.com',
+    calendarId: "3hpbubhguubuelviktjc34qfs8@group.calendar.google.com",
     timeMin: (new Date()).toISOString(),
     maxResults: 1000,
     singleEvents: true,
@@ -61,13 +60,15 @@ function listEvents(auth) {
     if (err) return console.log('The API returned an error: ' + err);
     const events = res.data.items;
     if (events.length) {
-      console.log('Upcoming 10 events:');
       events.map((event, i) => {
         const start = event.start.dateTime || event.start.date;
-        console.log(`${i}: ${start} - ${event.summary}`);
+        const [homeTeam, awayTeam] = event.summary.split('@');
+        console.log('home', homeTeam.trim())
+        console.log('away', awayTeam.trim())
       });
     } else {
       console.log('No upcoming events found.');
     }
   });
 }
+
