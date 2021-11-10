@@ -1,0 +1,92 @@
+[
+ {
+  "id": 0,
+  "away": "BKN",
+  "home": "ORL",
+  "dateTime": "11/10/2021, 7:00:00 PM",
+  "league": "nba",
+  "link": "http://espn.go.com/nba/gamecast?gameId=401359983",
+  "location": "Amway Center"
+ },
+ {
+  "id": 1,
+  "away": "WAS",
+  "home": "CLE",
+  "dateTime": "11/10/2021, 7:00:00 PM",
+  "league": "nba",
+  "link": "http://espn.go.com/nba/gamecast?gameId=401359982",
+  "location": "Rocket Mortgage FieldHouse"
+ },
+ {
+  "id": 2,
+  "away": "MIL",
+  "home": "NYK",
+  "dateTime": "11/10/2021, 7:30:00 PM",
+  "league": "nba",
+  "link": "http://espn.go.com/nba/gamecast?gameId=401359985",
+  "location": "Madison Square Garden"
+ },
+ {
+  "id": 3,
+  "away": "TOR",
+  "home": "BOS",
+  "dateTime": "11/10/2021, 7:30:00 PM",
+  "league": "nba",
+  "link": "http://espn.go.com/nba/gamecast?gameId=401359984",
+  "location": "TD Garden"
+ },
+ {
+  "id": 4,
+  "away": "DET",
+  "home": "HOU",
+  "dateTime": "11/10/2021, 7:30:00 PM",
+  "league": "nba",
+  "link": "http://espn.go.com/watchespn/index?gameId=401359986&sport=nba",
+  "location": "Watch on ESPN"
+ },
+ {
+  "id": 5,
+  "away": "CHA",
+  "home": "MEM",
+  "dateTime": "11/10/2021, 8:00:00 PM",
+  "league": "nba",
+  "link": "http://espn.go.com/nba/gamecast?gameId=401359988",
+  "location": "FedExForum"
+ },
+ {
+  "id": 6,
+  "away": "DAL",
+  "home": "CHI",
+  "dateTime": "11/10/2021, 8:00:00 PM",
+  "league": "nba",
+  "link": "http://espn.go.com/nba/gamecast?gameId=401359987",
+  "location": "United Center"
+ },
+ {
+  "id": 7,
+  "away": "OKC",
+  "home": "NOP",
+  "dateTime": "11/10/2021, 8:00:00 PM",
+  "league": "nba",
+  "link": "http://espn.go.com/nba/gamecast?gameId=401359989",
+  "location": "Smoothie King Center"
+ },
+ {
+  "id": 8,
+  "away": "SAC",
+  "home": "SAS",
+  "dateTime": "11/10/2021, 8:30:00 PM",
+  "league": "nba",
+  "link": "http://espn.go.com/nba/gamecast?gameId=401359990",
+  "location": "AT&T Center"
+ },
+ {
+  "id": 9,
+  "away": "POR",
+  "home": "PHX",
+  "dateTime": "11/10/2021, 9:00:00 PM",
+  "league": "nba",
+  "link": "http://espn.go.com/nba/gamecast?gameId=401359992",
+  "location": "Footprint Center"
+ }
+]
