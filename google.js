@@ -56,7 +56,7 @@ function getAccessToken(oAuth2Client, callback) {
 
 function listEvents(auth) {
   const calendar = google.calendar({ version: "v3", auth });
-  const maxResults = 10;
+  const maxResults = 2500;
   calendar.events.list(
     {
       // calendarId: 'primary',
@@ -74,14 +74,14 @@ function listEvents(auth) {
       if (events.length) {
         events.map((event, i) => {
           const start = event.start.dateTime || event.start.date; //date format!
-          let [away, home] = event.summary.split("@");
-          home = rename(home, 'nba');
-          away = rename(away, 'nba');
+          let [away, home] = event.summary.split(" @ ");
+          home = rename(home, "nba");
+          away = rename(away, "nba");
           const str = `${i + 1}: ${start} - ${away} @ ${home}`;
           console.log(str);
-          // arr.push(str);
+          arr.push(str);
         });
-        // writeToFile(arr);
+        writeToFile(arr);
       } else {
         console.log("No upcoming events found.");
       }
