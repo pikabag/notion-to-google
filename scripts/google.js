@@ -1,3 +1,4 @@
+require('dotenv').config({path:__dirname+'/../.env'})
 const fs = require("fs");
 const readline = require("readline");
 const abbrev = require("../lib/abbrev.js");
@@ -63,10 +64,10 @@ function listEvents(auth) {
   const map = new Map(
     Object.entries(
       (leagues = {
-        nba: "8hioqpf6n4ctjpsvb6srg897io@group.calendar.google.com",
-        nfl: "umn39ikucfl4vgpn5d24e6mk4o@group.calendar.google.com",
-        mlb: "ic18al4e0emq056k90ee0knkdk@group.calendar.google.com",
-        nhl: "3hpbubhguubuelviktjc34qfs8@group.calendar.google.com",
+        nba: process.env.NBA_ID,
+        nfl: process.env.NFL_ID,
+        mlb: process.env.MLB_ID,
+        nhl: process.env.NHL_ID,
       })
     )
   ).forEach((value, index) => {
