@@ -1,8 +1,8 @@
 const fs = require("fs");
 const readline = require("readline");
-const { google } = require("googleapis");
 const abbrev = require("./lib/abbrev.js");
-const { rename } = require("./rename.js");
+const { google } = require("googleapis");
+const { rename } = require("./lib/rename.js");
 const { start } = require("repl");
 
 const SCOPES = ["https://www.googleapis.com/auth/calendar"];
