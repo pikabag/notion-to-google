@@ -57,7 +57,7 @@ function getAccessToken(oAuth2Client, callback) {
 
 function listEvents(auth) {
   const calendar = google.calendar({ version: "v3", auth });
-  const maxResults = 10;
+  const maxResults = 2500;
   calendar.events.list(
     {
       calendarId: "8hioqpf6n4ctjpsvb6srg897io@group.calendar.google.com", //NBA
