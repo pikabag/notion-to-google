@@ -2,7 +2,7 @@ const fs = require("fs");
 const readline = require("readline");
 const { google } = require("googleapis");
 const abbrev = require("./lib/abbrev.js");
-const { rename } = require("./rename.js");
+const { rename } = require("./lib/rename.js");
 const { start } = require("repl");
 
 const SCOPES = ["https://www.googleapis.com/auth/calendar"];
@@ -75,7 +75,7 @@ function listEvents(auth) {
         events.map((event, i) => {
           const start = event.start.dateTime || event.start.date;
           // const str = `${i + 1}: ${start} - ${away} @ ${home}`;
-          const obj = printDetails(event, "nba", i);
+          const obj = getObjectFromEvent(event, "nba", i);
           arr.push(obj);
         });
       } else {
@@ -96,20 +96,22 @@ const writeToFile = (arr, league, ext) => {
   });
 };
 
-const printDetails = (event, league, index) => {
+const getObjectFromEvent = (event, league, index) => {
   let [away, home] = event.summary.split(" @ ");
-  away = rename(away, league);
-  home = rename(home, league);
+  let awayAbb = rename(away, league);
+  let homeAbb = rename(home, league);
   const dateTime = new Date(event.start.dateTime).toLocaleString();
   const [location] = event.location.split(" - ");
   const link = event.description.match(/\bhttps?:\/\/\S+/gi)[0];
 
   let obj = {
     id: index,
-    away: away,
-    home: home,
+    away: awayAbb,
+    awayFull: away,
+    home: homeAbb,
+    homeFull: home,
     dateTime: dateTime,
-    league: league,
+    league: league.toUpperCase(),
     link: link,
     location: location,
   };
