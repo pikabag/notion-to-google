@@ -58,7 +58,7 @@ function getAccessToken(oAuth2Client, callback) {
 
 function listEvents(auth) {
   const calendar = google.calendar({ version: "v3", auth });
-  const maxResults = 10;
+  const maxResults = 2000; //Number of entries
 
   const map = new Map(
     Object.entries(
@@ -84,7 +84,7 @@ function listEvents(auth) {
       },
       (err, res) => {
         if (err) return console.log("The API returned an error: " + err);
-        console.log(`Showing data for the next ${maxResults} items:`);
+        // console.log(`Showing data for the next ${maxResults} items:`);
         const events = res.data.items;
         var arr = []; //Array for fs.writeFile()
         if (events.length) {
@@ -97,8 +97,8 @@ function listEvents(auth) {
         } else {
           console.log("No upcoming events found.");
         }
-        console.log("Resultant array: ");
-        console.log(arr);
+        // console.log("Resultant array: ");
+        // console.log(arr);
         writeToFile(arr, league, "json");
       }
     );
@@ -107,9 +107,9 @@ function listEvents(auth) {
 
 const writeToFile = (arr, league, ext) => {
   arr = JSON.stringify(arr, null, " ");
-  fs.writeFile(`../data/gameList-${league}.${ext}`, arr, (err) => {
+  fs.writeFile(`../data/test_gameList-${league}.${ext}`, arr, (err) => { //TEST
     if (err) console.log(err);
-    else console.log("Successfully written to file!");
+    else console.log(`Success writing to file for league: ${league}`);
   });
 };
 
@@ -117,9 +117,17 @@ const getObjectFromEvent = (event, league, index) => {
   let [awayFull, homeFull] = event.summary.split(" @ ");
   let dateTime, link, location;
 
-  if (!awayFull || !homeFull) {
+  if (awayFull === "TBD" || homeFull === "TBD") {
     awayAbb = awayFull = homeFull = homeAbb = "TBD";
   } else {
+    awayFull = awayFull.replace(
+      /([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g,
+      ""
+    ).trim();
+    homeFull = homeFull.replace(
+      /([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g,
+      ""
+    ).trim();
     awayAbb = rename(awayFull, league);
     homeAbb = rename(homeFull, league);
     dateTime = new Date(event.start.dateTime).toLocaleString();
