@@ -3,80 +3,90 @@
   "id": 0,
   "away": "BKN",
   "home": "ORL",
-  "dateTime": "2021-11-11T00:00:00Z",
+  "dateTime": "11/10/2021, 7:00:00 PM",
   "league": "nba",
-  "location": "Amway Center - Orlando, FL"
+  "link": "http://espn.go.com/nba/gamecast?gameId=401359983",
+  "location": "Amway Center"
  },
  {
   "id": 1,
   "away": "WAS",
   "home": "CLE",
-  "dateTime": "2021-11-11T00:00:00Z",
+  "dateTime": "11/10/2021, 7:00:00 PM",
   "league": "nba",
-  "location": "Rocket Mortgage FieldHouse - Cleveland, OH"
+  "link": "http://espn.go.com/nba/gamecast?gameId=401359982",
+  "location": "Rocket Mortgage FieldHouse"
  },
  {
   "id": 2,
   "away": "MIL",
   "home": "NYK",
-  "dateTime": "2021-11-11T00:30:00Z",
+  "dateTime": "11/10/2021, 7:30:00 PM",
   "league": "nba",
-  "location": "Madison Square Garden - New York, NY"
+  "link": "http://espn.go.com/nba/gamecast?gameId=401359985",
+  "location": "Madison Square Garden"
  },
  {
   "id": 3,
   "away": "TOR",
   "home": "BOS",
-  "dateTime": "2021-11-11T00:30:00Z",
+  "dateTime": "11/10/2021, 7:30:00 PM",
   "league": "nba",
-  "location": "TD Garden - Boston, MA"
+  "link": "http://espn.go.com/nba/gamecast?gameId=401359984",
+  "location": "TD Garden"
  },
  {
   "id": 4,
   "away": "DET",
   "home": "HOU",
-  "dateTime": "2021-11-11T00:30:00Z",
+  "dateTime": "11/10/2021, 7:30:00 PM",
   "league": "nba",
+  "link": "http://espn.go.com/watchespn/index?gameId=401359986&sport=nba",
   "location": "Watch on ESPN"
  },
  {
   "id": 5,
   "away": "CHA",
   "home": "MEM",
-  "dateTime": "2021-11-11T01:00:00Z",
+  "dateTime": "11/10/2021, 8:00:00 PM",
   "league": "nba",
-  "location": "FedExForum - Memphis, TN"
+  "link": "http://espn.go.com/nba/gamecast?gameId=401359988",
+  "location": "FedExForum"
  },
  {
   "id": 6,
   "away": "DAL",
   "home": "CHI",
-  "dateTime": "2021-11-11T01:00:00Z",
+  "dateTime": "11/10/2021, 8:00:00 PM",
   "league": "nba",
-  "location": "United Center - Chicago, IL"
+  "link": "http://espn.go.com/nba/gamecast?gameId=401359987",
+  "location": "United Center"
  },
  {
   "id": 7,
   "away": "OKC",
   "home": "NOP",
-  "dateTime": "2021-11-11T01:00:00Z",
+  "dateTime": "11/10/2021, 8:00:00 PM",
   "league": "nba",
-  "location": "Smoothie King Center - New Orleans, LA"
+  "link": "http://espn.go.com/nba/gamecast?gameId=401359989",
+  "location": "Smoothie King Center"
  },
  {
   "id": 8,
   "away": "SAC",
   "home": "SAS",
-  "dateTime": "2021-11-11T01:30:00Z",
+  "dateTime": "11/10/2021, 8:30:00 PM",
   "league": "nba",
-  "location": "AT&T Center - San Antonio, TX"
+  "link": "http://espn.go.com/nba/gamecast?gameId=401359990",
+  "location": "AT&T Center"
  },
  {
   "id": 9,
   "away": "POR",
   "home": "PHX",
-  "dateTime": "2021-11-11T02:00:00Z",
+  "dateTime": "11/10/2021, 9:00:00 PM",
   "league": "nba",
-  "location": "Footprint Center - Phoenix, AZ"
+  "link": "http://espn.go.com/nba/gamecast?gameId=401359992",
+  "location": "Footprint Center"
  }
 ]

@@ -58,7 +58,6 @@ function getAccessToken(oAuth2Client, callback) {
 function listEvents(auth) {
   const calendar = google.calendar({ version: "v3", auth });
   const maxResults = 10;
-  // const leagues = ["nba", "nhl", "mlb", "nfl"];
   calendar.events.list(
     {
       calendarId: "8hioqpf6n4ctjpsvb6srg897io@group.calendar.google.com", //NBA
@@ -101,14 +100,18 @@ const printDetails = (event, league, index) => {
   let [away, home] = event.summary.split(" @ ");
   away = rename(away, league);
   home = rename(home, league);
+  const dateTime = new Date(event.start.dateTime).toLocaleString();
+  const [location] = event.location.split(" - ");
+  const link = event.description.match(/\bhttps?:\/\/\S+/gi)[0];
+
   let obj = {
     id: index,
     away: away,
     home: home,
-    dateTime: event.start.dateTime,
+    dateTime: dateTime,
     league: league,
-    // description: event.description,
-    location: event.location,
+    link: link,
+    location: location,
   };
   // console.log(obj);
   return obj;
