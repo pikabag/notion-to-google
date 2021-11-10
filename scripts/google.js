@@ -58,7 +58,7 @@ function getAccessToken(oAuth2Client, callback) {
 
 function listEvents(auth) {
   const calendar = google.calendar({ version: "v3", auth });
-  const maxResults = 10;
+  const maxResults = 2000;
   calendar.events.list(
     {
       calendarId: "8hioqpf6n4ctjpsvb6srg897io@group.calendar.google.com", //NBA
@@ -98,19 +98,25 @@ const writeToFile = (arr, league, ext) => {
 };
 
 const getObjectFromEvent = (event, league, index) => {
-  let [away, home] = event.summary.split(" @ ");
-  awayAbb = rename(away, league);
-  homeAbb = rename(home, league);
-  const dateTime = new Date(event.start.dateTime).toLocaleString();
-  const [location] = event.location.split(" - ");
-  const link = event.description.match(/\bhttps?:\/\/\S+/gi)[0];
+  let [awayFull, homeFull] = event.summary.split(" @ ");
+  let dateTime, link, location;
+
+  if (!awayFull || !homeFull) {
+    awayAbb = awayFull = homeFull = homeAbb = "TBD";
+  } else {
+    awayAbb = rename(awayFull, league);
+    homeAbb = rename(homeFull, league);
+    dateTime = new Date(event.start.dateTime).toLocaleString();
+    [location] = event.location.split(" - ");
+    link = event.description.match(/\bhttps?:\/\/\S+/gi)[0];
+  }
 
   let obj = {
     id: index,
-    away: awayAbb,
-    awayFull: away,
-    home: homeAbb,
-    homeFull: home,
+    awayAbb: awayAbb,
+    awayFull: awayFull,
+    homeAbb: homeAbb,
+    homeFull: homeFull,
     dateTime: dateTime,
     league: league.toUpperCase(),
     link: link,
