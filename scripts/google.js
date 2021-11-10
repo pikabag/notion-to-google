@@ -1,15 +1,16 @@
 const fs = require("fs");
 const readline = require("readline");
-const abbrev = require("./lib/abbrev.js");
+const abbrev = require("../lib/abbrev.js");
 const { google } = require("googleapis");
-const { rename } = require("./lib/rename.js");
+const { rename } = require("../lib/rename.js");
 const { start } = require("repl");
 
 const SCOPES = ["https://www.googleapis.com/auth/calendar"];
-const TOKEN_PATH = "credentials/token.json";
+const TOKEN_PATH = "../credentials/token.json";
+const CREDENTIALS_PATH = "../credentials/credentials.json";
 
 // Load client secrets from a local file.
-fs.readFile("credentials/credentials.json", (err, content) => {
+fs.readFile(CREDENTIALS_PATH, (err, content) => {
   if (err) return console.log("Error loading client secret file:", err);
   authorize(JSON.parse(content), listEvents);
 });
