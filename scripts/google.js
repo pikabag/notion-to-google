@@ -1,4 +1,4 @@
-require('dotenv').config({path:__dirname+'/../.env'})
+require("dotenv").config({ path: __dirname + "/../.env" });
 const fs = require("fs");
 const readline = require("readline");
 const abbrev = require("../lib/abbrev.js");
@@ -108,7 +108,8 @@ function listEvents(auth) {
 
 const writeToFile = (arr, league, ext) => {
   arr = JSON.stringify(arr, null, " ");
-  fs.writeFile(`../data/test_gameList-${league}.${ext}`, arr, (err) => { //TEST
+  
+  fs.writeFile(`../data/gameList-${league}.${ext}`, arr, (err) => {
     if (err) console.log(err);
     else console.log(`Success writing to file for league: ${league}`);
   });
@@ -119,21 +120,28 @@ const getObjectFromEvent = (event, league, index) => {
   let dateTime, link, location;
 
   if (awayFull === "TBD" || homeFull === "TBD") {
+    //If null/undefined, declare TBD
     awayAbb = awayFull = homeFull = homeAbb = "TBD";
   } else {
-    awayFull = awayFull.replace(
-      /([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g,
-      ""
-    ).trim();
-    homeFull = homeFull.replace(
-      /([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g,
-      ""
-    ).trim();
+    //Remove emojis if exists
+    awayFull = awayFull
+      .replace(
+        /([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g,
+        ""
+      )
+      .trim();
+    homeFull = homeFull
+      .replace(
+        /([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g,
+        ""
+      )
+      .trim();
+    //Adjustments
     awayAbb = rename(awayFull, league);
     homeAbb = rename(homeFull, league);
     dateTime = new Date(event.start.dateTime).toLocaleString();
     [location] = event.location.split(" - ");
-    link = event.description.match(/\bhttps?:\/\/\S+/gi)[0];
+    link = event.description.match(/\bhttps?:\/\/\S+/gi)[0]; //Get the first link from description string
   }
 
   let obj = {
