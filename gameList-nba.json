@@ -1,0 +1,82 @@
+[
+ {
+  "id": 0,
+  "away": "BKN",
+  "home": "ORL",
+  "dateTime": "2021-11-11T00:00:00Z",
+  "league": "nba",
+  "location": "Amway Center - Orlando, FL"
+ },
+ {
+  "id": 1,
+  "away": "WAS",
+  "home": "CLE",
+  "dateTime": "2021-11-11T00:00:00Z",
+  "league": "nba",
+  "location": "Rocket Mortgage FieldHouse - Cleveland, OH"
+ },
+ {
+  "id": 2,
+  "away": "MIL",
+  "home": "NYK",
+  "dateTime": "2021-11-11T00:30:00Z",
+  "league": "nba",
+  "location": "Madison Square Garden - New York, NY"
+ },
+ {
+  "id": 3,
+  "away": "TOR",
+  "home": "BOS",
+  "dateTime": "2021-11-11T00:30:00Z",
+  "league": "nba",
+  "location": "TD Garden - Boston, MA"
+ },
+ {
+  "id": 4,
+  "away": "DET",
+  "home": "HOU",
+  "dateTime": "2021-11-11T00:30:00Z",
+  "league": "nba",
+  "location": "Watch on ESPN"
+ },
+ {
+  "id": 5,
+  "away": "CHA",
+  "home": "MEM",
+  "dateTime": "2021-11-11T01:00:00Z",
+  "league": "nba",
+  "location": "FedExForum - Memphis, TN"
+ },
+ {
+  "id": 6,
+  "away": "DAL",
+  "home": "CHI",
+  "dateTime": "2021-11-11T01:00:00Z",
+  "league": "nba",
+  "location": "United Center - Chicago, IL"
+ },
+ {
+  "id": 7,
+  "away": "OKC",
+  "home": "NOP",
+  "dateTime": "2021-11-11T01:00:00Z",
+  "league": "nba",
+  "location": "Smoothie King Center - New Orleans, LA"
+ },
+ {
+  "id": 8,
+  "away": "SAC",
+  "home": "SAS",
+  "dateTime": "2021-11-11T01:30:00Z",
+  "league": "nba",
+  "location": "AT&T Center - San Antonio, TX"
+ },
+ {
+  "id": 9,
+  "away": "POR",
+  "home": "PHX",
+  "dateTime": "2021-11-11T02:00:00Z",
+  "league": "nba",
+  "location": "Footprint Center - Phoenix, AZ"
+ }
+]

@@ -3,6 +3,7 @@ const readline = require("readline");
 const { google } = require("googleapis");
 const abbrev = require("./lib/abbrev.js");
 const { rename } = require("./rename.js");
+const { start } = require("repl");
 
 const SCOPES = ["https://www.googleapis.com/auth/calendar"];
 const TOKEN_PATH = "credentials/token.json";
@@ -56,11 +57,11 @@ function getAccessToken(oAuth2Client, callback) {
 
 function listEvents(auth) {
   const calendar = google.calendar({ version: "v3", auth });
-  const maxResults = 2500;
+  const maxResults = 10;
+  // const leagues = ["nba", "nhl", "mlb", "nfl"];
   calendar.events.list(
     {
-      // calendarId: 'primary',
-      calendarId: "8hioqpf6n4ctjpsvb6srg897io@group.calendar.google.com",
+      calendarId: "8hioqpf6n4ctjpsvb6srg897io@group.calendar.google.com", //NBA
       timeMin: new Date().toISOString(),
       maxResults: maxResults,
       singleEvents: true,
@@ -73,27 +74,42 @@ function listEvents(auth) {
       var arr = []; //Array for fs.writeFile()
       if (events.length) {
         events.map((event, i) => {
-          const start = event.start.dateTime || event.start.date; //date format!
-          let [away, home] = event.summary.split(" @ ");
-          home = rename(home, "nba");
-          away = rename(away, "nba");
-          const str = `${i + 1}: ${start} - ${away} @ ${home}`;
-          console.log(str);
-          arr.push(str);
+          const start = event.start.dateTime || event.start.date;
+          // const str = `${i + 1}: ${start} - ${away} @ ${home}`;
+          const obj = printDetails(event, "nba", i);
+          arr.push(obj);
         });
-        writeToFile(arr);
       } else {
         console.log("No upcoming events found.");
       }
+      console.log("Resultant array: ");
+      console.log(arr);
+      writeToFile(arr, "nba", "json");
     }
   );
 }
 
-const writeToFile = (arr) => {
-  var file = fs.createWriteStream("gamelist.txt");
+const writeToFile = (arr, league, ext) => {
   arr = JSON.stringify(arr, null, " ");
-  fs.writeFile("gamelist.txt", arr, (err) => {
+  fs.writeFile(`gameList-${league}.${ext}`, arr, (err) => {
     if (err) console.log(err);
     else console.log("Successfully written to file!");
   });
+};
+
+const printDetails = (event, league, index) => {
+  let [away, home] = event.summary.split(" @ ");
+  away = rename(away, league);
+  home = rename(home, league);
+  let obj = {
+    id: index,
+    away: away,
+    home: home,
+    dateTime: event.start.dateTime,
+    league: league,
+    // description: event.description,
+    location: event.location,
+  };
+  // console.log(obj);
+  return obj;
 };
