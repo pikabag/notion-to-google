@@ -91,7 +91,7 @@ function listEvents(auth) {
 
 const writeToFile = (arr, league, ext) => {
   arr = JSON.stringify(arr, null, " ");
-  fs.writeFile(`gameList-${league}.${ext}`, arr, (err) => {
+  fs.writeFile(`../data/gameList-${league}.${ext}`, arr, (err) => {
     if (err) console.log(err);
     else console.log("Successfully written to file!");
   });
