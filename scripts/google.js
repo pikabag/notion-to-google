@@ -58,35 +58,51 @@ function getAccessToken(oAuth2Client, callback) {
 
 function listEvents(auth) {
   const calendar = google.calendar({ version: "v3", auth });
-  const maxResults = 2000;
-  calendar.events.list(
-    {
-      calendarId: "8hioqpf6n4ctjpsvb6srg897io@group.calendar.google.com", //NBA
-      timeMin: new Date().toISOString(),
-      maxResults: maxResults,
-      singleEvents: true,
-      orderBy: "startTime",
-    },
-    (err, res) => {
-      if (err) return console.log("The API returned an error: " + err);
-      console.log(`Showing data for the next ${maxResults} items:`);
-      const events = res.data.items;
-      var arr = []; //Array for fs.writeFile()
-      if (events.length) {
-        events.map((event, i) => {
-          const start = event.start.dateTime || event.start.date;
-          // const str = `${i + 1}: ${start} - ${away} @ ${home}`;
-          const obj = getObjectFromEvent(event, "nba", i);
-          arr.push(obj);
-        });
-      } else {
-        console.log("No upcoming events found.");
+  const maxResults = 10;
+
+  const map = new Map(
+    Object.entries(
+      (leagues = {
+        nba: "8hioqpf6n4ctjpsvb6srg897io@group.calendar.google.com",
+        nfl: "umn39ikucfl4vgpn5d24e6mk4o@group.calendar.google.com",
+        mlb: "ic18al4e0emq056k90ee0knkdk@group.calendar.google.com",
+        nhl: "3hpbubhguubuelviktjc34qfs8@group.calendar.google.com",
+      })
+    )
+  ).forEach((value, index) => {
+    list(value, index);
+  });
+
+  function list(calendarId, league) {
+    calendar.events.list(
+      {
+        calendarId: calendarId, //NBA
+        timeMin: new Date().toISOString(),
+        maxResults: maxResults,
+        singleEvents: true,
+        orderBy: "startTime",
+      },
+      (err, res) => {
+        if (err) return console.log("The API returned an error: " + err);
+        console.log(`Showing data for the next ${maxResults} items:`);
+        const events = res.data.items;
+        var arr = []; //Array for fs.writeFile()
+        if (events.length) {
+          events.map((event, i) => {
+            const start = event.start.dateTime || event.start.date;
+            // const str = `${i + 1}: ${start} - ${away} @ ${home}`;
+            const obj = getObjectFromEvent(event, league, i);
+            arr.push(obj);
+          });
+        } else {
+          console.log("No upcoming events found.");
+        }
+        console.log("Resultant array: ");
+        console.log(arr);
+        writeToFile(arr, league, "json");
       }
-      console.log("Resultant array: ");
-      console.log(arr);
-      writeToFile(arr, "nba", "json");
-    }
-  );
+    );
+  }
 }
 
 const writeToFile = (arr, league, ext) => {
