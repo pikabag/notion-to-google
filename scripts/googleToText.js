@@ -59,7 +59,7 @@ function getAccessToken(oAuth2Client, callback) {
 
 function listEvents(auth) {
   const calendar = google.calendar({ version: "v3", auth });
-  const maxResults = 2000; //Number of entries
+  const maxResults = 10; //Number of entries
 
   const map = new Map(
     Object.entries(
