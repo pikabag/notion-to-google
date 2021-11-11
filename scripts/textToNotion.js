@@ -33,7 +33,7 @@ const deleteItems = async () => {
 };
 
 const postData = (league, emoji) => {
-  switch(emoji):
+  switch (emoji) {
     case "mlb":
       let emojiIcon = "⚾";
       break;
@@ -46,6 +46,7 @@ const postData = (league, emoji) => {
     case "nhl":
       let emojiIcon = "🏒";
       break;
+  }
 
   league = JSON.parse(league);
 
@@ -56,7 +57,7 @@ const postData = (league, emoji) => {
       parent: { database_id: databaseId },
       icon: {
         type: "emoji",
-        emoji: emojiIcon
+        emoji: emojiIcon,
       },
       properties: {
         Name: {
@@ -126,4 +127,4 @@ const postData = (league, emoji) => {
   });
 };
 
-postData(nba, 'nba');
+postData(nba, "nba");
