@@ -2,3 +2,4 @@ node_modules/*
 credentials/*
 package-lock.json
 .env*
+data/*

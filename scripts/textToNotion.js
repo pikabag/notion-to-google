@@ -50,8 +50,7 @@ const postData = league => {
         'Date': {
           type: 'date',
           date: {
-            start: league[0].dateTime,
-            timeZone: 'America/New_York'
+            start: league[0].dateTime
           },
         },
         'League': {

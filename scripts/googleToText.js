@@ -118,11 +118,22 @@ const writeToFile = (arr, league, ext) => {
   });
 };
 
-function changeTimeToEST(date) {
-  date.setHours(date.getHours() - 4);
-  var str1 = date.toString().replace(/.000Z$/,"-04:00")
+function toEST(date) {
+  var tzo = -date.getTimezoneOffset(),
+      dif = tzo >= 0 ? '+' : '-',
+      pad = function(num) {
+          var norm = Math.floor(Math.abs(num));
+          return (norm < 10 ? '0' : '') + norm;
+      };
 
-  return str1.toLocaleString();
+  return date.getFullYear() +
+      '-' + pad(date.getMonth() + 1) +
+      '-' + pad(date.getDate()) +
+      'T' + pad(date.getHours()) +
+      ':' + pad(date.getMinutes()) +
+      ':' + pad(date.getSeconds()) +
+      dif + pad(tzo / 60) +
+      ':' + pad(tzo % 60);
 }
 
 //OBJECT GENERATION
@@ -151,7 +162,7 @@ const getObjectFromEvent = (event, league, index) => {
     awayAbb = rename(awayFull, league);
     homeAbb = rename(homeFull, league);
     title = `${awayAbb} @ ${homeAbb}`;
-    dateTime = changeTimeToEST(new Date(event.start.dateTime));
+    dateTime = toEST(new Date(event.start.dateTime));
     [location] = event.location.split(" - ");
     link = event.description.match(/\bhttps?:\/\/\S+/gi)[0]; //Get the first link from description string
   }
