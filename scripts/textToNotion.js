@@ -1,4 +1,4 @@
-require("dotenv").config();
+require("dotenv").config({ path: __dirname + "/../.env" });
 const { Client } = require("@notionhq/client");
 const fs = require('fs');
 const notion = new Client({ auth: process.env.NOTION_API_KEY });
@@ -26,39 +26,61 @@ const postData = league => {
   league = JSON.parse(league);
   console.log(league[0]);
 
-  /*
   (async () => {
-  const response = await notion.pages.create({
-    parent: { database_id: databaseId },
-    properties: {
-      'Name': {
-        type: 'title',
-        title: [
-          {
-            type: 'text',
-            text: {
-              content: 'Tomatoes',
+    const response = await notion.pages.create({
+      parent: { database_id: databaseId },
+      properties: {
+        'Name': {
+          type: 'title',
+          title: [
+            {
+              type: 'text',
+              text: { content: 'test123' },
             },
+          ],
+        },
+        'id': {
+          type: 'number',
+          number: league[0].id
+        },
+        'Date': {
+          type: 'date',
+          date: {
+            start: league[0].dateTime
           },
-        ],
-      },
-      Price: {
-        type: 'number',
-        number: 1.49,
-      },
-      'Last ordered': {
-        type: 'date',
-        date: {
-          start: '2021-05-11',
+        },
+        'League': {
+          type: 'select',
+          name: league[0].league
+        },
+        'Home': {
+          type: 'select',
+          name: league[0].homeAbb
+        },
+        'Home Full': {
+          type: 'text',
+          name: league[0].homeFull
+        },
+        'Away': {
+          type: 'select',
+          name: league[0].awayAbb
+        },
+        'Away Full': {
+          type: 'text',
+          name: league[0].awayFull
+        },
+        'Link': {
+          type: 'url',
+          name: league[0].link
+        },
+        'Arena': {
+          type: 'text',
+          name: league[0].location
         },
       },
-    },
     });
     console.log(response);
   })();
-*/
-
-
 }
 
 postData(mlb);
