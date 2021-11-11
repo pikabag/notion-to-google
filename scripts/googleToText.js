@@ -60,7 +60,7 @@ function getAccessToken(oAuth2Client, callback) {
 
 function listEvents(auth) {
   const calendar = google.calendar({ version: "v3", auth });
-  const maxResults = (TEST == 1) ? 10 : 2500;
+  const maxResults = TEST == 1 ? 10 : 2500;
 
   const map = new Map(
     Object.entries(
@@ -110,7 +110,8 @@ function listEvents(auth) {
 //WRITE FILE
 const writeToFile = (arr, league, ext) => {
   arr = JSON.stringify(arr, null, " ");
-  const fileWrite = (TEST == 1) ? `../data/${league}-test.${ext}` : `../data/${league}.${ext}`
+  const fileWrite =
+    TEST == 1 ? `../data/${league}-test.${ext}` : `../data/${league}.${ext}`;
 
   fs.writeFile(fileWrite, arr, (err) => {
     if (err) console.log(err);
@@ -120,20 +121,29 @@ const writeToFile = (arr, league, ext) => {
 
 function toEST(date) {
   var tzo = -date.getTimezoneOffset(),
-      dif = tzo >= 0 ? '+' : '-',
-      pad = function(num) {
-          var norm = Math.floor(Math.abs(num));
-          return (norm < 10 ? '0' : '') + norm;
-      };
+    dif = tzo >= 0 ? "+" : "-",
+    pad = function (num) {
+      var norm = Math.floor(Math.abs(num));
+      return (norm < 10 ? "0" : "") + norm;
+    };
 
-  return date.getFullYear() +
-      '-' + pad(date.getMonth() + 1) +
-      '-' + pad(date.getDate()) +
-      'T' + pad(date.getHours() + 1) +
-      ':' + pad(date.getMinutes()) +
-      ':' + pad(date.getSeconds()) +
-      dif + pad(tzo / 60) +
-      ':' + pad(tzo % 60);
+  return (
+    date.getFullYear() +
+    "-" +
+    pad(date.getMonth() + 1) +
+    "-" +
+    pad(date.getDate()) +
+    "T" +
+    pad(date.getHours() + 1) +
+    ":" +
+    pad(date.getMinutes()) +
+    ":" +
+    pad(date.getSeconds()) +
+    dif +
+    pad(tzo / 60) +
+    ":" +
+    pad(tzo % 60)
+  );
 }
 
 //OBJECT GENERATION
@@ -159,6 +169,7 @@ const getObjectFromEvent = (event, league, index) => {
       )
       .trim();
     //Adjustments
+    index = `${league}-${index}`;
     awayAbb = rename(awayFull, league);
     homeAbb = rename(homeFull, league);
     title = `${awayAbb} @ ${homeAbb}`;
