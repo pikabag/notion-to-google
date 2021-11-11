@@ -60,7 +60,7 @@ function getAccessToken(oAuth2Client, callback) {
 
 function listEvents(auth) {
   const calendar = google.calendar({ version: "v3", auth });
-  const maxResults = TEST === 1 ? 10 : 2500;
+  const maxResults = TEST == 1 ? 10 : 2500;
 
   const map = new Map(
     Object.entries(
@@ -78,7 +78,7 @@ function listEvents(auth) {
   function list(calendarId, league) {
     calendar.events.list(
       {
-        calendarId: calendarId, //NBA
+        calendarId: calendarId,
         timeMin: new Date().toISOString(),
         maxResults: maxResults,
         singleEvents: true,
@@ -169,7 +169,7 @@ const getObjectFromEvent = (event, league, index) => {
       )
       .trim();
     //Adjustments
-    index = `${league}-${index}`;
+    index = `${league}-${index.toString().padStart(4, "0")}`;
     awayAbb = rename(awayFull, league);
     homeAbb = rename(homeFull, league);
     title = `${awayAbb} @ ${homeAbb}`;

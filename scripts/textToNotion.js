@@ -33,18 +33,19 @@ const deleteItems = async () => {
 };
 
 const postData = (league, emoji) => {
+  let emojiicon;
   switch (emoji) {
     case "mlb":
-      let emojiIcon = "⚾";
+      emojiIcon = "⚾";
       break;
     case "nba":
-      let emojiIcon = "🏀";
+      emojiIcon = "🏀";
       break;
     case "nfl":
-      let emojiIcon = "🏈";
+      emojiIcon = "🏈";
       break;
     case "nhl":
-      let emojiIcon = "🏒";
+      emojiIcon = "🏒";
       break;
   }
 
@@ -127,4 +128,5 @@ const postData = (league, emoji) => {
   });
 };
 
-postData(nba, "nba");
+postData(nflTest, "nfl");
+// deleteItems
