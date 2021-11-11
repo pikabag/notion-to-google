@@ -59,7 +59,7 @@ function getAccessToken(oAuth2Client, callback) {
 
 function listEvents(auth) {
   const calendar = google.calendar({ version: "v3", auth });
-  const maxResults = 2500; //Number of entries
+  const maxResults = 10; //Number of entries
 
   const map = new Map(
     Object.entries(
@@ -109,8 +109,8 @@ function listEvents(auth) {
 //WRITE FILE
 const writeToFile = (arr, league, ext) => {
   arr = JSON.stringify(arr, null, " ");
-
-  fs.writeFile(`../data/gameList-${league}.${ext}`, arr, (err) => {
+  
+  fs.writeFile(`../data/TEST_gameList-${league}.${ext}`, arr, (err) => {
     if (err) console.log(err);
     else console.log(`Success writing to file for league: ${league}`);
   });
@@ -122,7 +122,7 @@ const getObjectFromEvent = (event, league, index) => {
   let dateTime, link, location, title;
 
   if (awayFull === "TBD" || homeFull === "TBD") {
-    //If null/undefined, declare TBD,
+    //If null/undefined, declare TBD
     awayAbb = awayFull = homeFull = homeAbb = title = "TBD";
   } else {
     //Remove emojis if exists
@@ -141,7 +141,7 @@ const getObjectFromEvent = (event, league, index) => {
     //Adjustments
     awayAbb = rename(awayFull, league);
     homeAbb = rename(homeFull, league);
-    title = `${awayAbb} @ ${homeAbb}`;
+    title = `${awayAbb} @ ${homeAbb}`
     dateTime = new Date(event.start.dateTime).toLocaleString();
     [location] = event.location.split(" - ");
     link = event.description.match(/\bhttps?:\/\/\S+/gi)[0]; //Get the first link from description string
