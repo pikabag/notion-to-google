@@ -4,11 +4,6 @@ const fs = require("fs");
 const notion = new Client({ auth: process.env.NOTION_API_KEY });
 const databaseId = process.env.NOTION_API_DATABASE;
 
-const baseball_emoji = "⚾";
-const basketball_emoji = "🏀";
-const football_emoji = "🏈";
-const hockey_emoji = "🏒";
-
 const TEST = process.env.TEST;
 
 const nflTest = fs.readFileSync("../data/nfl-test.json");
@@ -37,7 +32,21 @@ const deleteItems = async () => {
   });
 };
 
-const postData = (league) => {
+const postData = (league, emoji) => {
+  switch(emoji):
+    case "mlb":
+      let emojiIcon = "⚾";
+      break;
+    case "nba":
+      let emojiIcon = "🏀";
+      break;
+    case "nfl":
+      let emojiIcon = "🏈";
+      break;
+    case "nhl":
+      let emojiIcon = "🏒";
+      break;
+
   league = JSON.parse(league);
 
   league.forEach(async (data, i) => {
@@ -47,7 +56,7 @@ const postData = (league) => {
       parent: { database_id: databaseId },
       icon: {
         type: "emoji",
-        emoji: basketball_emoji,
+        emoji: emojiIcon
       },
       properties: {
         Name: {
@@ -117,4 +126,4 @@ const postData = (league) => {
   });
 };
 
-postData(nba);
+postData(nba, 'nba');
