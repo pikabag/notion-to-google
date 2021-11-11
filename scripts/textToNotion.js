@@ -9,6 +9,13 @@ const mlb = fs.readFileSync('../data/mlb-test.json');
 const nba = fs.readFileSync('../data/nba-test.json');
 const nhl = fs.readFileSync('../data/nhl-test.json');
 
+const baseball_emoji = "⚾"
+const basketball_emoji = "🏀"
+const football_emoji = "🏈"
+const hockey_emoji = "🏒"
+
+const TEST = process.env.TEST;
+
 const getDatabase = async () => {
   const response = await notion.databases.query({ database_id: databaseId });
   // console.log(response);
@@ -24,14 +31,21 @@ const listNames = (response) => {
 
 const postData = league => {
   league = JSON.parse(league);
-  console.log(league[0]);
+  let data;
 
-  (async () => {
-    const response = await notion.pages.create({
+  for (let i = 0; i < league.length; i++) {
+    if (TEST == 1) {
+      data = league[0];
+      i = league.length;
+    } else {
+      data = league[i]
+    }
+
+    const response = notion.pages.create({
       parent: { database_id: databaseId },
       icon: {
         type: "emoji",
-        emoji: "⚾"
+        emoji: basketball_emoji 
       },
       properties: {
         'Name': {
@@ -39,57 +53,56 @@ const postData = league => {
           title: [
             {
               type: 'text',
-              text: { content: league[0].title },
+              text: { content: data.title },
             },
           ],
         },
         'id': {
           type: 'number',
-          number: league[0].id
+          number: data.id
         },
         'Date': {
           type: 'date',
           date: {
-            start: league[0].dateTime
+            start: data.dateTime
           },
         },
         'League': {
           'select': {
-            name: league[0].league
+            name: data.league
           }
         },
         'Home': {
           'select': {
-            name: league[0].homeAbb
+            name: data.homeAbb
           }
         },
         'Home Full': {
           'rich_text': [{
-            text: { content: league[0].homeFull }
+            text: { content: data.homeFull }
           }]
         },
         'Away': {
           'select': {
-            name: league[0].awayAbb
+            name: data.awayAbb
           }
         },
         'Away Full': {
           'rich_text': [{
-            text: { content: league[0].awayFull } 
+            text: { content: data.awayFull } 
           }]
         },
         'Link': {
-          'url': league[0].link
+          'url': data.link
         },
         'Arena': {
           'rich_text': [{
-            text: { content: league[0].location }
+            text: { content: data.location }
           }]
         },
       },
     });
-    console.log(response);
-  })();
+  }
 }
 
 postData(nba);

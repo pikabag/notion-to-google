@@ -9,7 +9,7 @@ const { start } = require("repl");
 const SCOPES = ["https://www.googleapis.com/auth/calendar"];
 const TOKEN_PATH = "../credentials/token.json";
 const CREDENTIALS_PATH = "../credentials/credentials.json";
-const TEST = true;
+const TEST = process.env.TEST;
 
 // Load client secrets from a local file.
 fs.readFile(CREDENTIALS_PATH, (err, content) => {
@@ -129,7 +129,7 @@ function toEST(date) {
   return date.getFullYear() +
       '-' + pad(date.getMonth() + 1) +
       '-' + pad(date.getDate()) +
-      'T' + pad(date.getHours()) +
+      'T' + pad(date.getHours() + 1) +
       ':' + pad(date.getMinutes()) +
       ':' + pad(date.getSeconds()) +
       dif + pad(tzo / 60) +
