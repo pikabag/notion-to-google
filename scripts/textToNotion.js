@@ -4,17 +4,21 @@ const fs = require('fs');
 const notion = new Client({ auth: process.env.NOTION_API_KEY });
 const databaseId = process.env.NOTION_API_DATABASE;
 
-const nfl = fs.readFileSync('../data/nfl-test.json');
-const mlb = fs.readFileSync('../data/mlb-test.json');
-const nba = fs.readFileSync('../data/nba-test.json');
-const nhl = fs.readFileSync('../data/nhl-test.json');
-
 const baseball_emoji = "⚾"
 const basketball_emoji = "🏀"
 const football_emoji = "🏈"
 const hockey_emoji = "🏒"
 
 const TEST = process.env.TEST;
+
+const nflTest = fs.readFileSync('../data/nfl-test.json');
+const mlbTest = fs.readFileSync('../data/mlb-test.json');
+const nbaTest = fs.readFileSync('../data/nba-test.json');
+const nhlTest = fs.readFileSync('../data/nhl-test.json');
+const nfl = fs.readFileSync('../data/nfl.json');
+const mlb = fs.readFileSync('../data/mlb.json');
+const nba = fs.readFileSync('../data/nba.json');
+const nhl = fs.readFileSync('../data/nhl.json');
 
 const getDatabase = async () => {
   const response = await notion.databases.query({ database_id: databaseId });
@@ -33,13 +37,9 @@ const postData = league => {
   league = JSON.parse(league);
   let data;
 
-  for (let i = 0; i < league.length; i++) {
-    if (TEST == 1) {
-      data = league[0];
-      i = league.length;
-    } else {
-      data = league[i]
-    }
+  for (let i = 0; i < 1060; i++) {
+    data = league[i]
+    console.log(data);
 
     const response = notion.pages.create({
       parent: { database_id: databaseId },

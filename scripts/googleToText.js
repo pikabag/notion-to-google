@@ -60,7 +60,7 @@ function getAccessToken(oAuth2Client, callback) {
 
 function listEvents(auth) {
   const calendar = google.calendar({ version: "v3", auth });
-  const maxResults = TEST ? 10 : 2500;
+  const maxResults = (TEST == 1) ? 10 : 2500;
 
   const map = new Map(
     Object.entries(
@@ -110,11 +110,11 @@ function listEvents(auth) {
 //WRITE FILE
 const writeToFile = (arr, league, ext) => {
   arr = JSON.stringify(arr, null, " ");
-  const fileWrite = TEST ? `../data/${league}-test.${ext}` : `../data/${league}.${ext}`
+  const fileWrite = (TEST == 1) ? `../data/${league}-test.${ext}` : `../data/${league}.${ext}`
 
   fs.writeFile(fileWrite, arr, (err) => {
     if (err) console.log(err);
-    else console.log(`Success writing to file for league: ${league}`);
+    else console.log(`Success writing to file for league: ${fileWrite}`);
   });
 };
 
