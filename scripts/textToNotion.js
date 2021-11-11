@@ -21,9 +21,21 @@ const nba = fs.readFileSync('../data/nba.json');
 const nhl = fs.readFileSync('../data/nhl.json');
 
 const getDatabase = async () => {
-  const response = await notion.databases.query({ database_id: databaseId });
-  // console.log(response);
-  listNames(response);
+  const response = await notion.databases.query({ 
+    database_id: databaseId ,
+
+  });
+  let results = response.results;
+
+  results.forEach(item => {
+    console.log(item.id);
+    const response = notion.pages.update({
+      page_id: item.id,
+      archived: true
+    });
+  });
+
+  // listNames(response);
 };
 
 const listNames = (response) => {
@@ -105,4 +117,5 @@ const postData = league => {
   }
 }
 
-postData(nba);
+getDatabase();
+// postData(nba);
