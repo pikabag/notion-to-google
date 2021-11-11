@@ -41,14 +41,11 @@ const deleteItems = async () => {
 
 const postData = (league) => {
   league = JSON.parse(league);
-  let data;
 
-  for (let i = 0; i < 2000; i++) {
-    data = league[i];
-    if (!data) break;
-    // console.log(data);
-
-    const response = notion.pages.create({
+  league.forEach(async (data, i) => {
+    console.log(`POSTing for ${data.id}`);
+    console.log(data);
+    const response = await notion.pages.create({
       parent: { database_id: databaseId },
       icon: {
         type: "emoji",
@@ -65,8 +62,11 @@ const postData = (league) => {
           ],
         },
         id: {
-          type: "rich_text",
-          number: data.id,
+          rich_text: [
+            {
+              text: { content: data.id },
+            },
+          ],
         },
         Date: {
           type: "date",
@@ -115,8 +115,86 @@ const postData = (league) => {
         },
       },
     });
-  }
+    console.log(response);
+  });
+
+  // for (let i = 0; i < 2000; i++) {
+  //   data = league[i];
+  //   if (!data) break;
+
+  //   async () => {
+  //     console.log(`POSTing for ${data.id}`);
+  //     const response = await notion.pages.create({
+  //       parent: { database_id: databaseId },
+  //       icon: {
+  //         type: "emoji",
+  //         emoji: basketball_emoji,
+  //       },
+  //       properties: {
+  //         Name: {
+  //           type: "title",
+  //           title: [
+  //             {
+  //               type: "text",
+  //               text: { content: data.title },
+  //             },
+  //           ],
+  //         },
+  //         id: {
+  //           type: "rich_text",
+  //           number: data.id,
+  //         },
+  //         Date: {
+  //           type: "date",
+  //           date: {
+  //             start: data.dateTime,
+  //           },
+  //         },
+  //         League: {
+  //           select: {
+  //             name: data.league,
+  //           },
+  //         },
+  //         Home: {
+  //           select: {
+  //             name: data.homeAbb,
+  //           },
+  //         },
+  //         "Home Full": {
+  //           rich_text: [
+  //             {
+  //               text: { content: data.homeFull },
+  //             },
+  //           ],
+  //         },
+  //         Away: {
+  //           select: {
+  //             name: data.awayAbb,
+  //           },
+  //         },
+  //         "Away Full": {
+  //           rich_text: [
+  //             {
+  //               text: { content: data.awayFull },
+  //             },
+  //           ],
+  //         },
+  //         Link: {
+  //           url: data.link,
+  //         },
+  //         Arena: {
+  //           rich_text: [
+  //             {
+  //               text: { content: data.location },
+  //             },
+  //           ],
+  //         },
+  //       },
+  //     });
+  //     console.log(response);
+  //   };
+  // }
 };
 
 // deleteItems();
-postData(nbaTest);
+postData(nba);
