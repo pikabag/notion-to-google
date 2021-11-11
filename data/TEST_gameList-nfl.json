@@ -1,122 +1,132 @@
 [
  {
   "id": 0,
-  "title": "BAL @ MIA",
+  "title": [
+   "Watch on FOX, NFL NET"
+  ],
   "awayAbb": "BAL",
   "awayFull": "Baltimore Ravens",
   "homeAbb": "MIA",
   "homeFull": "Miami Dolphins",
-  "dateTime": "11/11/2021, 8:20:00 PM",
+  "dateTime": "2021-11-12T01:20:00Z",
   "league": "NFL",
-  "link": "http://espn.go.com/nfl/game?gameId=401326465",
-  "location": "Watch on FOX, NFL NET"
+  "link": "http://espn.go.com/nfl/game?gameId=401326465"
  },
  {
   "id": 1,
-  "title": "CLE @ NE",
+  "title": [
+   "Watch on CBS"
+  ],
   "awayAbb": "CLE",
   "awayFull": "Cleveland Browns",
   "homeAbb": "NE",
   "homeFull": "New England Patriots",
-  "dateTime": "11/14/2021, 1:00:00 PM",
+  "dateTime": "2021-11-14T18:00:00Z",
   "league": "NFL",
-  "link": "http://espn.go.com/nfl/game?gameId=401326468",
-  "location": "Watch on CBS"
+  "link": "http://espn.go.com/nfl/game?gameId=401326468"
  },
  {
   "id": 2,
-  "title": "DET @ PIT",
+  "title": [
+   "Watch on FOX"
+  ],
   "awayAbb": "DET",
   "awayFull": "Detroit Lions",
   "homeAbb": "PIT",
   "homeFull": "Pittsburgh Steelers",
-  "dateTime": "11/14/2021, 1:00:00 PM",
+  "dateTime": "2021-11-14T18:00:00Z",
   "league": "NFL",
-  "link": "http://espn.go.com/nfl/game?gameId=401326470",
-  "location": "Watch on FOX"
+  "link": "http://espn.go.com/nfl/game?gameId=401326470"
  },
  {
   "id": 3,
-  "title": "NO @ TEN",
+  "title": [
+   "Watch on CBS"
+  ],
   "awayAbb": "NO",
   "awayFull": "New Orleans Saints",
   "homeAbb": "TEN",
   "homeFull": "Tennessee Titans",
-  "dateTime": "11/14/2021, 1:00:00 PM",
+  "dateTime": "2021-11-14T18:00:00Z",
   "league": "NFL",
-  "link": "http://espn.go.com/nfl/game?gameId=401326471",
-  "location": "Watch on CBS"
+  "link": "http://espn.go.com/nfl/game?gameId=401326471"
  },
  {
   "id": 4,
-  "title": "ATL @ DAL",
+  "title": [
+   "Watch on FOX"
+  ],
   "awayAbb": "ATL",
   "awayFull": "Atlanta Falcons",
   "homeAbb": "DAL",
   "homeFull": "Dallas Cowboys",
-  "dateTime": "11/14/2021, 1:00:00 PM",
+  "dateTime": "2021-11-14T18:00:00Z",
   "league": "NFL",
-  "link": "http://espn.go.com/nfl/game?gameId=401326466",
-  "location": "Watch on FOX"
+  "link": "http://espn.go.com/nfl/game?gameId=401326466"
  },
  {
   "id": 5,
-  "title": "BUF @ NYJ",
+  "title": [
+   "Watch on CBS"
+  ],
   "awayAbb": "BUF",
   "awayFull": "Buffalo Bills",
   "homeAbb": "NYJ",
   "homeFull": "New York Jets",
-  "dateTime": "11/14/2021, 1:00:00 PM",
+  "dateTime": "2021-11-14T18:00:00Z",
   "league": "NFL",
-  "link": "http://espn.go.com/nfl/game?gameId=401326469",
-  "location": "Watch on CBS"
+  "link": "http://espn.go.com/nfl/game?gameId=401326469"
  },
  {
   "id": 6,
-  "title": "TB @ WAS",
+  "title": [
+   "Watch on FOX"
+  ],
   "awayAbb": "TB",
   "awayFull": "Tampa Bay Buccaneers",
   "homeAbb": "WAS",
   "homeFull": "Washington",
-  "dateTime": "11/14/2021, 1:00:00 PM",
+  "dateTime": "2021-11-14T18:00:00Z",
   "league": "NFL",
-  "link": "http://espn.go.com/nfl/game?gameId=401326472",
-  "location": "Watch on FOX"
+  "link": "http://espn.go.com/nfl/game?gameId=401326472"
  },
  {
   "id": 7,
-  "title": "JAC @ IND",
+  "title": [
+   "Watch on CBS"
+  ],
   "awayAbb": "JAC",
   "awayFull": "Jacksonville Jaguars",
   "homeAbb": "IND",
   "homeFull": "Indianapolis Colts",
-  "dateTime": "11/14/2021, 1:00:00 PM",
+  "dateTime": "2021-11-14T18:00:00Z",
   "league": "NFL",
-  "link": "http://espn.go.com/nfl/game?gameId=401326467",
-  "location": "Watch on CBS"
+  "link": "http://espn.go.com/nfl/game?gameId=401326467"
  },
  {
   "id": 8,
-  "title": "MIN @ LAC",
+  "title": [
+   "Watch on FOX"
+  ],
   "awayAbb": "MIN",
   "awayFull": "Minnesota Vikings",
   "homeAbb": "LAC",
   "homeFull": "Los Angeles Chargers",
-  "dateTime": "11/14/2021, 4:05:00 PM",
+  "dateTime": "2021-11-14T21:05:00Z",
   "league": "NFL",
-  "link": "http://espn.go.com/nfl/game?gameId=401326474",
-  "location": "Watch on FOX"
+  "link": "http://espn.go.com/nfl/game?gameId=401326474"
  },
  {
   "id": 9,
-  "title": "CAR @ ARI",
+  "title": [
+   "Watch on FOX"
+  ],
   "awayAbb": "CAR",
   "awayFull": "Carolina Panthers",
   "homeAbb": "ARI",
   "homeFull": "Arizona Cardinals",
-  "dateTime": "11/14/2021, 4:05:00 PM",
+  "dateTime": "2021-11-14T21:05:00Z",
   "league": "NFL",
-  "link": "http://espn.go.com/nfl/game?gameId=401326473",
-  "location": "Watch on FOX"
+  "link": "http://espn.go.com/nfl/game?gameId=401326473"
  }
 ]

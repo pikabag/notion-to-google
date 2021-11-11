@@ -1,122 +1,142 @@
 [
  {
   "id": 0,
-  "title": "TOR @ MIN",
+  "title": [
+   "Hammond Stadium at CenturyLinks Sports Complex",
+   "Fort Myers, Florida"
+  ],
   "awayAbb": "TOR",
   "awayFull": "Toronto Blue Jays",
   "homeAbb": "MIN",
   "homeFull": "Minnesota Twins",
-  "dateTime": "2/26/2022, 12:00:00 AM",
+  "dateTime": "2022-02-26T05:00:00Z",
   "league": "MLB",
-  "link": "http://espn.go.com/mlb/gamecast?gameId=401358935",
-  "location": "Hammond Stadium at CenturyLinks Sports Complex"
+  "link": "http://espn.go.com/mlb/gamecast?gameId=401358935"
  },
  {
   "id": 1,
-  "title": "LAA @ MIL",
+  "title": [
+   "American Family Fields of Phoenix",
+   "Phoenix, Arizona"
+  ],
   "awayAbb": "LAA",
   "awayFull": "Los Angeles Angels",
   "homeAbb": "MIL",
   "homeFull": "Milwaukee Brewers",
-  "dateTime": "2/26/2022, 12:00:00 AM",
+  "dateTime": "2022-02-26T05:00:00Z",
   "league": "MLB",
-  "link": "http://espn.go.com/mlb/gamecast?gameId=401358923",
-  "location": "American Family Fields of Phoenix"
+  "link": "http://espn.go.com/mlb/gamecast?gameId=401358923"
  },
  {
   "id": 2,
-  "title": "LAD @ CHC",
+  "title": [
+   "Sloan Park",
+   "Mesa, Arizona"
+  ],
   "awayAbb": "LAD",
   "awayFull": "Los Angeles Dodgers",
   "homeAbb": "CHC",
   "homeFull": "Chicago Cubs",
-  "dateTime": "2/26/2022, 12:00:00 AM",
+  "dateTime": "2022-02-26T05:00:00Z",
   "league": "MLB",
-  "link": "http://espn.go.com/mlb/gamecast?gameId=401358928",
-  "location": "Sloan Park"
+  "link": "http://espn.go.com/mlb/gamecast?gameId=401358928"
  },
  {
   "id": 3,
-  "title": "PHI @ NYY",
+  "title": [
+   "George M. Steinbrenner Field",
+   "Tampa, Florida"
+  ],
   "awayAbb": "PHI",
   "awayFull": "Philadelphia Phillies",
   "homeAbb": "NYY",
   "homeFull": "New York Yankees",
-  "dateTime": "2/26/2022, 12:00:00 AM",
+  "dateTime": "2022-02-26T05:00:00Z",
   "league": "MLB",
-  "link": "http://espn.go.com/mlb/gamecast?gameId=401359381",
-  "location": "George M. Steinbrenner Field"
+  "link": "http://espn.go.com/mlb/gamecast?gameId=401359381"
  },
  {
   "id": 4,
-  "title": "TB @ PIT",
+  "title": [
+   "LECOM Park",
+   "Bradenton, Florida"
+  ],
   "awayAbb": "TB",
   "awayFull": "Tampa Bay Rays",
   "homeAbb": "PIT",
   "homeFull": "Pittsburgh Pirates",
-  "dateTime": "2/26/2022, 12:00:00 AM",
+  "dateTime": "2022-02-26T05:00:00Z",
   "league": "MLB",
-  "link": "http://espn.go.com/mlb/gamecast?gameId=401358934",
-  "location": "LECOM Park"
+  "link": "http://espn.go.com/mlb/gamecast?gameId=401358934"
  },
  {
   "id": 5,
-  "title": "NYM @ MIA",
+  "title": [
+   "Roger Dean Chevrolet Stadium",
+   "Sarasota, Florida"
+  ],
   "awayAbb": "NYM",
   "awayFull": "New York Mets",
   "homeAbb": "MIA",
   "homeFull": "Miami Marlins",
-  "dateTime": "2/26/2022, 12:00:00 AM",
+  "dateTime": "2022-02-26T05:00:00Z",
   "league": "MLB",
-  "link": "http://espn.go.com/mlb/gamecast?gameId=401358930",
-  "location": "Roger Dean Chevrolet Stadium"
+  "link": "http://espn.go.com/mlb/gamecast?gameId=401358930"
  },
  {
   "id": 6,
-  "title": "STL @ HOU",
+  "title": [
+   "FITTEAM Ballpark of the Palm Beaches",
+   "Palm Beach, Florida"
+  ],
   "awayAbb": "STL",
   "awayFull": "St. Louis Cardinals",
   "homeAbb": "HOU",
   "homeFull": "Houston Astros",
-  "dateTime": "2/26/2022, 12:00:00 AM",
+  "dateTime": "2022-02-26T05:00:00Z",
   "league": "MLB",
-  "link": "http://espn.go.com/mlb/gamecast?gameId=401358933",
-  "location": "FITTEAM Ballpark of the Palm Beaches"
+  "link": "http://espn.go.com/mlb/gamecast?gameId=401358933"
  },
  {
   "id": 7,
-  "title": "CIN @ CLE",
+  "title": [
+   "Goodyear Ballpark",
+   "Goodyear, Arizona"
+  ],
   "awayAbb": "CIN",
   "awayFull": "Cincinnati Reds",
   "homeAbb": "CLE",
   "homeFull": "Cleveland Indians",
-  "dateTime": "2/26/2022, 12:00:00 AM",
+  "dateTime": "2022-02-26T05:00:00Z",
   "league": "MLB",
-  "link": "http://espn.go.com/mlb/gamecast?gameId=401358925",
-  "location": "Goodyear Ballpark"
+  "link": "http://espn.go.com/mlb/gamecast?gameId=401358925"
  },
  {
   "id": 8,
-  "title": "CIN @ SF",
+  "title": [
+   "Scottsdale Stadium",
+   "Scottsdale, Arizona"
+  ],
   "awayAbb": "CIN",
   "awayFull": "Cincinnati Reds",
   "homeAbb": "SF",
   "homeFull": "San Francisco Giants",
-  "dateTime": "2/26/2022, 12:00:00 AM",
+  "dateTime": "2022-02-26T05:00:00Z",
   "league": "MLB",
-  "link": "http://espn.go.com/mlb/gamecast?gameId=401359320",
-  "location": "Scottsdale Stadium"
+  "link": "http://espn.go.com/mlb/gamecast?gameId=401359320"
  },
  {
   "id": 9,
-  "title": "KC @ TEX",
+  "title": [
+   "Surprise Stadium",
+   "Surprise, Arizona"
+  ],
   "awayAbb": "KC",
   "awayFull": "Kansas City Royals",
   "homeAbb": "TEX",
   "homeFull": "Texas Rangers",
-  "dateTime": "2/26/2022, 12:00:00 AM",
+  "dateTime": "2022-02-26T05:00:00Z",
   "league": "MLB",
-  "link": "http://espn.go.com/mlb/gamecast?gameId=401358927",
-  "location": "Surprise Stadium"
+  "link": "http://espn.go.com/mlb/gamecast?gameId=401358927"
  }
 ]
