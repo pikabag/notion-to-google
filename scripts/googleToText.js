@@ -9,6 +9,7 @@ const { start } = require("repl");
 const SCOPES = ["https://www.googleapis.com/auth/calendar"];
 const TOKEN_PATH = "../credentials/token.json";
 const CREDENTIALS_PATH = "../credentials/credentials.json";
+const TEST = true;
 
 // Load client secrets from a local file.
 fs.readFile(CREDENTIALS_PATH, (err, content) => {
@@ -59,7 +60,7 @@ function getAccessToken(oAuth2Client, callback) {
 
 function listEvents(auth) {
   const calendar = google.calendar({ version: "v3", auth });
-  const maxResults = 2500; //Number of entries
+  const maxResults = TEST ? 10 : 2500;
 
   const map = new Map(
     Object.entries(
@@ -109,12 +110,20 @@ function listEvents(auth) {
 //WRITE FILE
 const writeToFile = (arr, league, ext) => {
   arr = JSON.stringify(arr, null, " ");
+  const fileWrite = TEST ? `../data/${league}-test.${ext}` : `../data/${league}.${ext}`
 
-  fs.writeFile(`../data/gameList-${league}.${ext}`, arr, (err) => {
+  fs.writeFile(fileWrite, arr, (err) => {
     if (err) console.log(err);
     else console.log(`Success writing to file for league: ${league}`);
   });
 };
+
+function changeTimeToEST(date) {
+  date.setHours(date.getHours() - 4);
+  var str1 = date.toString().replace(/.000Z$/,"-04:00")
+
+  return str1.toLocaleString();
+}
 
 //OBJECT GENERATION
 const getObjectFromEvent = (event, league, index) => {
@@ -142,7 +151,7 @@ const getObjectFromEvent = (event, league, index) => {
     awayAbb = rename(awayFull, league);
     homeAbb = rename(homeFull, league);
     title = `${awayAbb} @ ${homeAbb}`;
-    dateTime = new Date(event.start.dateTime).toLocaleString();
+    dateTime = changeTimeToEST(new Date(event.start.dateTime));
     [location] = event.location.split(" - ");
     link = event.description.match(/\bhttps?:\/\/\S+/gi)[0]; //Get the first link from description string
   }

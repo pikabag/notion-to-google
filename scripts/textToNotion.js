@@ -4,10 +4,10 @@ const fs = require('fs');
 const notion = new Client({ auth: process.env.NOTION_API_KEY });
 const databaseId = process.env.NOTION_API_DATABASE;
 
-const nfl = fs.readFileSync('../data/gameList-nfl.json');
-const mlb = fs.readFileSync('../data/gameList-mlb.json');
-const nba = fs.readFileSync('../data/gameList-nba.json');
-const nhl = fs.readFileSync('../data/gameList-nhl.json');
+const nfl = fs.readFileSync('../data/nfl-test.json');
+const mlb = fs.readFileSync('../data/mlb-test.json');
+const nba = fs.readFileSync('../data/nba-test.json');
+const nhl = fs.readFileSync('../data/nhl-test.json');
 
 const getDatabase = async () => {
   const response = await notion.databases.query({ database_id: databaseId });
@@ -29,13 +29,17 @@ const postData = league => {
   (async () => {
     const response = await notion.pages.create({
       parent: { database_id: databaseId },
+      icon: {
+        type: "emoji",
+        emoji: "⚾"
+      },
       properties: {
         'Name': {
           type: 'title',
           title: [
             {
               type: 'text',
-              text: { content: 'test123' },
+              text: { content: league[0].title },
             },
           ],
         },
@@ -46,36 +50,42 @@ const postData = league => {
         'Date': {
           type: 'date',
           date: {
-            start: league[0].dateTime
+            start: league[0].dateTime,
+            timeZone: 'America/New_York'
           },
         },
         'League': {
-          type: 'select',
-          name: league[0].league
+          'select': {
+            name: league[0].league
+          }
         },
         'Home': {
-          type: 'select',
-          name: league[0].homeAbb
+          'select': {
+            name: league[0].homeAbb
+          }
         },
         'Home Full': {
-          type: 'text',
-          name: league[0].homeFull
+          'rich_text': [{
+            text: { content: league[0].homeFull }
+          }]
         },
         'Away': {
-          type: 'select',
-          name: league[0].awayAbb
+          'select': {
+            name: league[0].awayAbb
+          }
         },
         'Away Full': {
-          type: 'text',
-          name: league[0].awayFull
+          'rich_text': [{
+            text: { content: league[0].awayFull } 
+          }]
         },
         'Link': {
-          type: 'url',
-          name: league[0].link
+          'url': league[0].link
         },
         'Arena': {
-          type: 'text',
-          name: league[0].location
+          'rich_text': [{
+            text: { content: league[0].location }
+          }]
         },
       },
     });
@@ -83,4 +93,4 @@ const postData = league => {
   })();
 }
 
-postData(mlb);
+postData(nba);
