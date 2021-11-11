@@ -11,12 +11,11 @@ const hockey_emoji = "🏒";
 
 const TEST = process.env.TEST;
 
-if (TEST === 1) {
-  const nflTest = fs.readFileSync("../data/nfl-test.json");
-  const mlbTest = fs.readFileSync("../data/mlb-test.json");
-  const nbaTest = fs.readFileSync("../data/nba-test.json");
-  const nhlTest = fs.readFileSync("../data/nhl-test.json");
-}
+const nflTest = fs.readFileSync("../data/nfl-test.json");
+const mlbTest = fs.readFileSync("../data/mlb-test.json");
+const nbaTest = fs.readFileSync("../data/nba-test.json");
+const nhlTest = fs.readFileSync("../data/nhl-test.json");
+
 const nfl = fs.readFileSync("../data/nfl.json");
 const mlb = fs.readFileSync("../data/mlb.json");
 const nba = fs.readFileSync("../data/nba.json");
@@ -44,86 +43,80 @@ const postData = (league) => {
   league = JSON.parse(league);
   let data;
 
-  for (let i = 0; i < 1060; i++) {
+  for (let i = 0; i < 2000; i++) {
     data = league[i];
+    if (!data) break;
     // console.log(data);
 
-    try {
-      const response = notion.pages.create({
-        parent: { database_id: databaseId },
-        icon: {
-          type: "emoji",
-          emoji: basketball_emoji,
+    const response = notion.pages.create({
+      parent: { database_id: databaseId },
+      icon: {
+        type: "emoji",
+        emoji: basketball_emoji,
+      },
+      properties: {
+        Name: {
+          type: "title",
+          title: [
+            {
+              type: "text",
+              text: { content: data.title },
+            },
+          ],
         },
-        properties: {
-          Name: {
-            type: "title",
-            title: [
-              {
-                type: "text",
-                text: { content: data.title },
-              },
-            ],
-          },
-          id: {
-            type: "rich_text",
-            number: data.id,
-          },
-          Date: {
-            type: "date",
-            date: {
-              start: data.dateTime,
-            },
-          },
-          League: {
-            select: {
-              name: data.league,
-            },
-          },
-          Home: {
-            select: {
-              name: data.homeAbb,
-            },
-          },
-          "Home Full": {
-            rich_text: [
-              {
-                text: { content: data.homeFull },
-              },
-            ],
-          },
-          Away: {
-            select: {
-              name: data.awayAbb,
-            },
-          },
-          "Away Full": {
-            rich_text: [
-              {
-                text: { content: data.awayFull },
-              },
-            ],
-          },
-          Link: {
-            url: data.link,
-          },
-          Arena: {
-            rich_text: [
-              {
-                text: { content: data.location },
-              },
-            ],
+        id: {
+          type: "rich_text",
+          number: data.id,
+        },
+        Date: {
+          type: "date",
+          date: {
+            start: data.dateTime,
           },
         },
-      });
-    } catch (err) {
-      console.log(`ERROR POSTING FOR ${data.id}`);
-      console.log(err);
-    } finally {
-      console.log(`Successfuly posted ${data.id}!`);
-    }
+        League: {
+          select: {
+            name: data.league,
+          },
+        },
+        Home: {
+          select: {
+            name: data.homeAbb,
+          },
+        },
+        "Home Full": {
+          rich_text: [
+            {
+              text: { content: data.homeFull },
+            },
+          ],
+        },
+        Away: {
+          select: {
+            name: data.awayAbb,
+          },
+        },
+        "Away Full": {
+          rich_text: [
+            {
+              text: { content: data.awayFull },
+            },
+          ],
+        },
+        Link: {
+          url: data.link,
+        },
+        Arena: {
+          rich_text: [
+            {
+              text: { content: data.location },
+            },
+          ],
+        },
+      },
+    });
   }
 };
 
 // deleteItems();
-postData(nba);
+postData(nbaTest);
