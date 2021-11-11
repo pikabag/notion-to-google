@@ -1,142 +1,122 @@
 [
  {
   "id": 0,
-  "title": [
-   "American Airlines Center",
-   "Dallas, TX"
-  ],
+  "title": "NSH @ DAL",
   "awayAbb": "NSH",
   "awayFull": "Nashville Predators",
   "homeAbb": "DAL",
   "homeFull": "Dallas Stars",
-  "dateTime": "2021-11-11T01:30:00Z",
+  "dateTime": "2021-11-11T01:30:00.000Z",
   "league": "NHL",
-  "link": "http://espn.go.com/nhl/gamecast?gameId=401349326"
+  "link": "http://espn.go.com/nhl/gamecast?gameId=401349326",
+  "location": "American Airlines Center"
  },
  {
   "id": 1,
-  "title": [
-   "Gila River Arena",
-   "Glendale, AZ"
-  ],
+  "title": "MIN @ ARI",
   "awayAbb": "MIN",
   "awayFull": "Minnesota Wild",
   "homeAbb": "ARI",
   "homeFull": "Arizona Coyotes",
-  "dateTime": "2021-11-11T03:00:00Z",
+  "dateTime": "2021-11-11T03:00:00.000Z",
   "league": "NHL",
-  "link": "http://espn.go.com/nhl/gamecast?gameId=401349327"
+  "link": "http://espn.go.com/nhl/gamecast?gameId=401349327",
+  "location": "Gila River Arena"
  },
  {
   "id": 2,
-  "title": [
-   "Bell Centre",
-   "Montreal, QC"
-  ],
+  "title": "CGY @ MTL",
   "awayAbb": "CGY",
   "awayFull": "Calgary Flames",
   "homeAbb": "MTL",
   "homeFull": "Montreal Canadiens",
-  "dateTime": "2021-11-12T00:00:00Z",
+  "dateTime": "2021-11-12T00:00:00.000Z",
   "league": "NHL",
-  "link": "http://espn.go.com/nhl/gamecast?gameId=401349329"
+  "link": "http://espn.go.com/nhl/gamecast?gameId=401349329",
+  "location": "Bell Centre"
  },
  {
   "id": 3,
-  "title": [
-   "Canadian Tire Centre",
-   "Ottawa, ON"
-  ],
+  "title": "LAK @ OTT",
   "awayAbb": "LAK",
   "awayFull": "Los Angeles Kings",
   "homeAbb": "OTT",
   "homeFull": "Ottawa Senators",
-  "dateTime": "2021-11-12T00:00:00Z",
+  "dateTime": "2021-11-12T00:00:00.000Z",
   "league": "NHL",
-  "link": "http://espn.go.com/nhl/gamecast?gameId=401349330"
+  "link": "http://espn.go.com/nhl/gamecast?gameId=401349330",
+  "location": "Canadian Tire Centre"
  },
  {
   "id": 4,
-  "title": [
-   "PPG Paints Arena",
-   "Pittsburgh, PA"
-  ],
+  "title": "FLA @ PIT",
   "awayAbb": "FLA",
   "awayFull": "Florida Panthers",
   "homeAbb": "PIT",
   "homeFull": "Pittsburgh Penguins",
-  "dateTime": "2021-11-12T00:00:00Z",
+  "dateTime": "2021-11-12T00:00:00.000Z",
   "league": "NHL",
-  "link": "http://espn.go.com/nhl/gamecast?gameId=401349333"
+  "link": "http://espn.go.com/nhl/gamecast?gameId=401349333",
+  "location": "PPG Paints Arena"
  },
  {
   "id": 5,
-  "title": [
-   "Prudential Center",
-   "Newark, NJ"
-  ],
+  "title": "NYI @ NJD",
   "awayAbb": "NYI",
   "awayFull": "New York Islanders",
   "homeAbb": "NJD",
   "homeFull": "New Jersey Devils",
-  "dateTime": "2021-11-12T00:00:00Z",
+  "dateTime": "2021-11-12T00:00:00.000Z",
   "league": "NHL",
-  "link": "http://espn.go.com/nhl/gamecast?gameId=401349332"
+  "link": "http://espn.go.com/nhl/gamecast?gameId=401349332",
+  "location": "Prudential Center"
  },
  {
   "id": 6,
-  "title": [
-   "TD Garden",
-   "Boston, MA"
-  ],
+  "title": "EDM @ BOS",
   "awayAbb": "EDM",
   "awayFull": "Edmonton Oilers",
   "homeAbb": "BOS",
   "homeFull": "Boston Bruins",
-  "dateTime": "2021-11-12T00:00:00Z",
+  "dateTime": "2021-11-12T00:00:00.000Z",
   "league": "NHL",
-  "link": "http://espn.go.com/nhl/gamecast?gameId=401349328"
+  "link": "http://espn.go.com/nhl/gamecast?gameId=401349328",
+  "location": "TD Garden"
  },
  {
   "id": 7,
-  "title": [
-   "Little Caesars Arena",
-   "Detroit, MI"
-  ],
+  "title": "WSH @ DET",
   "awayAbb": "WSH",
   "awayFull": "Washington Capitals",
   "homeAbb": "DET",
   "homeFull": "Detroit Red Wings",
-  "dateTime": "2021-11-12T00:30:00Z",
+  "dateTime": "2021-11-12T00:30:00.000Z",
   "league": "NHL",
-  "link": "http://espn.go.com/nhl/gamecast?gameId=401349331"
+  "link": "http://espn.go.com/nhl/gamecast?gameId=401349331",
+  "location": "Little Caesars Arena"
  },
  {
   "id": 8,
-  "title": [
-   "Canada Life Centre",
-   "Winnipeg, MB"
-  ],
+  "title": "SJS @ WPG",
   "awayAbb": "SJS",
   "awayFull": "San Jose Sharks",
   "homeAbb": "WPG",
   "homeFull": "Winnipeg Jets",
-  "dateTime": "2021-11-12T01:00:00Z",
+  "dateTime": "2021-11-12T01:00:00.000Z",
   "league": "NHL",
-  "link": "http://espn.go.com/nhl/gamecast?gameId=401349335"
+  "link": "http://espn.go.com/nhl/gamecast?gameId=401349335",
+  "location": "Canada Life Centre"
  },
  {
   "id": 9,
-  "title": [
-   "Enterprise Center",
-   "Saint Louis, MO"
-  ],
+  "title": "NSH @ STL",
   "awayAbb": "NSH",
   "awayFull": "Nashville Predators",
   "homeAbb": "STL",
   "homeFull": "St. Louis Blues",
-  "dateTime": "2021-11-12T01:00:00Z",
+  "dateTime": "2021-11-12T01:00:00.000Z",
   "league": "NHL",
-  "link": "http://espn.go.com/nhl/gamecast?gameId=401349334"
+  "link": "http://espn.go.com/nhl/gamecast?gameId=401349334",
+  "location": "Enterprise Center"
  }
 ]

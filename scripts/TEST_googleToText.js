@@ -109,7 +109,7 @@ function listEvents(auth) {
 //WRITE FILE
 const writeToFile = (arr, league, ext) => {
   arr = JSON.stringify(arr, null, " ");
-
+  
   fs.writeFile(`../data/TEST_gameList-${league}.${ext}`, arr, (err) => {
     if (err) console.log(err);
     else console.log(`Success writing to file for league: ${league}`);
@@ -119,7 +119,7 @@ const writeToFile = (arr, league, ext) => {
 //OBJECT GENERATION
 const getObjectFromEvent = (event, league, index) => {
   let [awayFull, homeFull] = event.summary.split(" @ ");
-  let link, location, title;
+  let dateTime, link, location, title;
 
   if (awayFull === "TBD" || homeFull === "TBD") {
     //If null/undefined, declare TBD
@@ -141,8 +141,9 @@ const getObjectFromEvent = (event, league, index) => {
     //Adjustments
     awayAbb = rename(awayFull, league);
     homeAbb = rename(homeFull, league);
-    title = // dateTime = new Date(event.start.dateTime).toLocaleString();
-    `${awayAbb} @ ${homeAbb}`[location] = event.location.split(" - ");
+    title = `${awayAbb} @ ${homeAbb}`
+    dateTime = new Date(event.start.dateTime).toISOString();
+    [location] = event.location.split(" - ");
     link = event.description.match(/\bhttps?:\/\/\S+/gi)[0]; //Get the first link from description string
   }
 
@@ -153,7 +154,7 @@ const getObjectFromEvent = (event, league, index) => {
     awayFull: awayFull,
     homeAbb: homeAbb,
     homeFull: homeFull,
-    dateTime: event.start.dateTime,
+    dateTime: dateTime,
     league: league.toUpperCase(),
     link: link,
     location: location,
