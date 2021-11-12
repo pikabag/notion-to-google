@@ -61,7 +61,7 @@ const verifyIds = async (data) => {
 
     if (id != index + missingIds.length) {
       console.log(`Diff ${index - missingIds.length} for ${index} and ${missingIds.length}`);
-      missingIds.push(id);
+      missingIds.push(index);
     }
   });
 
