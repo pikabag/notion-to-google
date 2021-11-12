@@ -31,6 +31,18 @@ const arg1 = process.argv[2];
 const getDatabase = async () => {
   const response = await notion.databases.query({
     database_id: databaseId,
+    filter: {
+      property: "League",
+      select: {
+        equals: "MLB",
+      },
+    },
+    sorts: [
+      {
+        property: "id",
+        direction: "ascending",
+      },
+    ],
   });
   const results = response.results;
   return results;
@@ -38,11 +50,23 @@ const getDatabase = async () => {
 };
 
 const verifyIds = async (data) => {
+  let missingIds = [];
   data = await data;
   data.forEach((element, index) => {
+    var id = element.properties.id.rich_text[0].text.content;
+    [, id] = id.split("-");
+    id = parseInt(id);
     console.log(`Index: ${index}`);
-    console.log(element.properties.id.rich_text[0].text.content);
+    console.log(id);
+
+    if (id != index + missingIds.length) {
+      console.log(`Diff ${index - missingIds.length} for ${index} and ${missingIds.length}`);
+      missingIds.push(index);
+    }
   });
+
+  console.log(`Missing IDs: `);
+  console.log(missingIds);
 };
 
 const data = getDatabase();
