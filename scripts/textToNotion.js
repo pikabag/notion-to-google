@@ -48,12 +48,13 @@ const searchDatabase = async league => {
         direction: 'ascending',
       },
     ],
+    start_cursor: "7d6bb1ae-92a3-4285-b769-2bc484628e33"
   });
 
   let results = response.results;
 
-  let index = 58;
-  for (let i = index; i < results.length; i++) {
+  let index = results[0].properties.id.rich_text[0].plain_text.split('-')[1];
+  for (let i = 0; i < results.length; i++) {
     let item = results[i].properties;
     let id = item.id.rich_text[0].plain_text.split('-')[1];
     id = parseInt(id, 10)
@@ -69,6 +70,7 @@ const searchDatabase = async league => {
   }
 
   console.log(abc);
+  console.log(response.next_cursor);
 }
 
 const postData = (league, emoji) => {
