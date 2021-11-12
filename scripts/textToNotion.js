@@ -128,5 +128,5 @@ const postData = (league, emoji) => {
   });
 };
 
-postData(nflTest, "nfl");
+postData(nfl, "nfl");
 // deleteItems

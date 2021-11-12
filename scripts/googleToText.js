@@ -94,7 +94,11 @@ function listEvents(auth) {
             const start = event.start.dateTime || event.start.date;
             // const str = `${i + 1}: ${start} - ${away} @ ${home}`;
             const obj = getObjectFromEvent(event, league, i);
-            arr.push(obj);
+            if (!obj) {
+              ("No matches found for this entry.");
+            } else {
+              arr.push(obj);
+            }
           });
         } else {
           console.log("No upcoming events found.");
@@ -153,7 +157,7 @@ const getObjectFromEvent = (event, league, index) => {
 
   if (awayFull === "TBD" || homeFull === "TBD") {
     //If null/undefined, declare TBD,
-    awayAbb = awayFull = homeFull = homeAbb = title = "TBD";
+    return null;
   } else {
     //Remove emojis if exists
     awayFull = awayFull
