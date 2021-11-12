@@ -32,6 +32,33 @@ const deleteItems = async () => {
   });
 };
 
+const searchDatabase = async league => {
+  const response = await notion.databases.query({
+    database_id: databaseId,
+    filter: {
+      property: 'League',
+      select: {
+          equals: 'MLB',
+      },
+    },
+    sorts: [
+      {
+        property: 'id',
+        direction: 'ascending',
+      },
+    ],
+  });
+
+  let results = response.results;
+
+  for (let i = 0; i < results.length; i++) {
+    let item = results[i].properties;
+    let id = item.id.rich_text[0].plain_text.split('-')[1];
+    id = parseInt(id, 10)
+    console.log(i, id);
+  }
+}
+
 const postData = (league, emoji) => {
   let emojiicon;
   switch (emoji) {
@@ -128,5 +155,6 @@ const postData = (league, emoji) => {
   });
 };
 
-postData(nfl, "nfl");
+// postData(nfl, "nfl");
 // deleteItems
+searchDatabase('mlb');
