@@ -33,6 +33,7 @@ const deleteItems = async () => {
 };
 
 const searchDatabase = async league => {
+  let abc = [];
   const response = await notion.databases.query({
     database_id: databaseId,
     filter: {
@@ -51,12 +52,23 @@ const searchDatabase = async league => {
 
   let results = response.results;
 
-  for (let i = 0; i < results.length; i++) {
+  let index = 58;
+  for (let i = index; i < results.length; i++) {
     let item = results[i].properties;
     let id = item.id.rich_text[0].plain_text.split('-')[1];
     id = parseInt(id, 10)
-    console.log(i, id);
+    console.log('i', i, 'index', index, 'id', id);
+    if (id > index) {
+      while (index < id) {
+        abc.push(index);
+        index++;
+      }
+      index = id;
+    }
+    index++;
   }
+
+  console.log(abc);
 }
 
 const postData = (league, emoji) => {
