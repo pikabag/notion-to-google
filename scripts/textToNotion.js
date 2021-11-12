@@ -15,6 +15,7 @@ const nfl = fs.readFileSync("../data/nfl.json");
 const mlb = fs.readFileSync("../data/mlb.json");
 const nba = fs.readFileSync("../data/nba.json");
 const nhl = fs.readFileSync("../data/nhl.json");
+const mlb_missing = fs.readFileSync("../data/mlb-missing.json");
 
 const deleteItems = async () => {
   // For now it can only archive up to 100 rows
@@ -32,20 +33,20 @@ const deleteItems = async () => {
   });
 };
 
-const searchDatabase = async league => {
+const searchDatabase = async (league) => {
   let abc = [];
   const response = await notion.databases.query({
     database_id: databaseId,
     filter: {
-      property: 'League',
+      property: "League",
       select: {
-          equals: 'MLB',
+        equals: "MLB",
       },
     },
     sorts: [
       {
-        property: 'id',
-        direction: 'ascending',
+        property: "id",
+        direction: "ascending",
       },
     ],
   });
@@ -55,9 +56,9 @@ const searchDatabase = async league => {
   let index = 58;
   for (let i = index; i < results.length; i++) {
     let item = results[i].properties;
-    let id = item.id.rich_text[0].plain_text.split('-')[1];
-    id = parseInt(id, 10)
-    console.log('i', i, 'index', index, 'id', id);
+    let id = item.id.rich_text[0].plain_text.split("-")[1];
+    id = parseInt(id, 10);
+    console.log("i", i, "index", index, "id", id);
     if (id > index) {
       while (index < id) {
         abc.push(index);
@@ -69,7 +70,7 @@ const searchDatabase = async league => {
   }
 
   console.log(abc);
-}
+};
 
 const postData = (league, emoji) => {
   let emojiicon;
@@ -167,6 +168,6 @@ const postData = (league, emoji) => {
   });
 };
 
-// postData(nfl, "nfl");
+postData(mlb_missing, "mlb");
 // deleteItems
-searchDatabase('mlb');
+// searchDatabase('mlb');
