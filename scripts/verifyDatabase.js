@@ -6,68 +6,28 @@ const databaseId = process.env.NOTION_API_DATABASE;
 
 const TEST = process.env.TEST;
 
-const nflTest = fs.readFileSync("../data/nfl-test.json");
-const mlbTest = fs.readFileSync("../data/mlb-test.json");
-const nbaTest = fs.readFileSync("../data/nba-test.json");
-const nhlTest = fs.readFileSync("../data/nhl-test.json");
+const mlbDummy = fs.readFileSync("../data/mlb-dummy-data.json");
+const verifyIds = (data) => {
+  let len = data.length;
+  let arr = [];
 
-const nfl = fs.readFileSync("../data/nfl.json");
-const mlb = fs.readFileSync("../data/mlb.json");
-const nba = fs.readFileSync("../data/nba.json");
-const nhl = fs.readFileSync("../data/nhl.json");
-
-const deleteItems = async () => {
-  // For now it can only archive up to 100 rows
-  const response = await notion.databases.query({
-    database_id: databaseId,
-  });
-  let results = response.results;
-
-  console.log(results);
-};
-
-const arg1 = process.argv[2];
-
-const getDatabase = async () => {
-  const response = await notion.databases.query({
-    database_id: databaseId,
-    filter: {
-      property: "League",
-      select: {
-        equals: "MLB",
-      },
-    },
-    sorts: [
-      {
-        property: "id",
-        direction: "ascending",
-      },
-    ],
-  });
-  const results = response.results;
-  return results;
-  //   console.log(results[0].properties.id.rich_text[0].text.content);
-};
-
-const verifyIds = async (data) => {
-  let missingIds = [];
-  data = await data;
-  data.forEach((element, index) => {
-    var id = element.properties.id.rich_text[0].text.content;
-    [, id] = id.split("-");
+  for (let i = 0; i < len; i++) {
+    let id = data[i].id.split("-")[1];
+    console.log(`id: ${id} @index: ${i}`);
     id = parseInt(id);
-    console.log(`Index: ${index}`);
-    console.log(id);
-
-    if (id != index + missingIds.length) {
-      console.log(`Diff ${index - missingIds.length} for ${index} and ${missingIds.length}`);
-      missingIds.push(index);
+    if (id != i + arr.length) {
+      arr.push(id - 1);
+      i--;
     }
-  });
+  }
 
   console.log(`Missing IDs: `);
-  console.log(missingIds);
+  console.log(arr);
 };
 
-const data = getDatabase();
+const data = JSON.parse(mlbDummy);
+// console.log(data);
 verifyIds(data);
+
+//Still rather inefficient eh?
+//Correct output: [ 3, 5, 8, 59, 67, 77, 79, 83, 84 ]
