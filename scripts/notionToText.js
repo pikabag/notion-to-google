@@ -8,22 +8,6 @@ const TEST = process.env.TEST;
 const fetch = async () => {
   const response = await notion.databases.query({
     database_id: databaseId,
-    // filter: {
-    //   or: [
-    //     {
-    //       property: "In stock",
-    //       checkbox: {
-    //         equals: true,
-    //       },
-    //     },
-    //     {
-    //       property: "Cost of next trip",
-    //       number: {
-    //         greater_than_or_equal_to: 2,
-    //       },
-    //     },
-    //   ],
-    // },
     // sorts: [
     //   {
     //     property: "Last ordered",
@@ -31,10 +15,20 @@ const fetch = async () => {
     //   },
     // ],
     filter: {
-      property: "League",
-      select: {
-        equals: "NBA",
-      },
+      and: [
+        {
+          property: "League",
+          select: {
+            equals: "NBA",
+          },
+        },
+        {
+          property: "Name",
+          text: {
+            contains: "LAC",
+          },
+        },
+      ],
     },
     page_size: 10,
   });
@@ -61,13 +55,11 @@ const write = (obj) => {
 (async () => {
   var results = await fetch();
   results = results.results;
-  var newArr = [];
+  var arr = [];
 
   results.forEach((child) => {
-    // console.log(child.properties);
-    newArr.push(child.properties);
+    arr.push(child.properties);
   });
 
-  // console.log(newArr);
-  write(newArr);
+  write(arr);
 })();
